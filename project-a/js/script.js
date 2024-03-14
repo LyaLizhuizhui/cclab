@@ -426,7 +426,7 @@ function s5() {
     amp = 55;
     h = 150;
 
-    background(240, 2)
+    background(240, 100)
     push();
     translate(width / 2, 0);
     s4c = 300;
