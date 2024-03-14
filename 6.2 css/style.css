@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(45, 0, 0);
+}
+
+h1 {
+    color: ghostwhite;
+    font-size: 52px;
+    font-weight: 600;
+    font-family: "Ojuju";
+}
+
+h3 {
+    color: rgb(185, 185, 185);
+    -webkit-text-stroke: 1px black;
+    font-size: 28px;
+    font-weight: 400;
+    font-family: "Inter";
+}
+
+p {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 150;
+    font-family: "Inter";
+}
+
+.glitch {
+    color: darkred;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Indie Flower";
+}
+
+.textending {
+    font-style: italic;
+}
