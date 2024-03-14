@@ -115,9 +115,7 @@ function mouseDragged() {
         yDraggedInRange = true;
     }
     if (s1times < 7 && xDraggedInRange == true && yDraggedInRange == true) {
-        if (s1times < 6) {
-            ellipse(mouseX, mouseY, 40, 20);
-        }
+        ellipse(mouseX, mouseY, 40, 20);
     }
 }
 
