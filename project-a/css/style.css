@@ -1,84 +1,37 @@
 body {
-    background-color: black;
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
+    background-color: rgb(45, 0, 0);
 }
 
-/* title */
-#title-wrapper {
-    text-align: center;
-    margin-top: 120px;
-}
-
-.headline {
-    font-size: 4em;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+h1 {
+    color: ghostwhite;
+    font-size: 52px;
     font-weight: 600;
+    font-family: "Ojuju";
 }
 
-/* main content */
-#main-wrapper {
-    width: 800px;
-    position: relative;
-    margin: auto;
+h3 {
+    color: rgb(185, 185, 185);
+    -webkit-text-stroke: 1px black;
+    font-size: 28px;
+    font-weight: 400;
+    font-family: "Inter";
 }
 
-.red {
-    color: coral;
+p {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 150;
+    font-family: "Inter";
 }
 
-.green {
-    color: aquamarine;
-}
-
-.yellow {
-    color: gold;
-}
-
-
-.two-columns {
-    display: flex;
-}
-
-.left {
-    width: 50%;
-    padding: 0px 10px 0px 0px;
-}
-
-.right {
-    width: 50%;
-    padding: 0px 0px 0px 10px;
-}
-
-
-#footer {
-    text-align: center;
-    font-size: 0.7em;
-    margin-top: 50px;
-    padding-bottom: 40px;
-}
-
-/* Sketch placeholder */
-#p5-canvas-container img {
-    width: 800px;
-}
-
-
-/* home button */
-#home-button a {
-    position: fixed;
-    right: 30px;
-    top: 30px;
-    padding: 10px 20px;
-    color: dimgrey;
-    border: solid dimgrey 0.5px;
-    font-size: 0.7em;
+.glitch {
+    color: darkred;
+    font-style: italic;
+    font-size: 24px;
     font-weight: bold;
-    text-decoration: none;
+    font-family: "Indie Flower";
 }
 
-#home-button a:hover {
-    background-color: coral;
-    color: black;
+.textending {
+    font-style: italic;
 }
