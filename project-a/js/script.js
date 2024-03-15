@@ -441,6 +441,7 @@ function stage5() {
             line(rX1, rY1, rX2, rY2);
         }
     }
+    // text1
     if (frameCount % 40 == 0) {
         for (i = 0; i <= 3; i++) {
             textSize(28);
@@ -453,10 +454,11 @@ function stage5() {
     fill(0, 50);
     noStroke();
     ellipse(0, height / 2, stage5frameCount * 2, stage5frameCount * 2);
-    pop();
+    // text2
     if (stage5frameCount >= 200) {
         fill(240);
         textSize(28);
         text("I cannot see You now.", -140, 230);
     }
+    pop();
 }
