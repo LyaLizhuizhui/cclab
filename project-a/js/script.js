@@ -406,7 +406,7 @@ function stage4() {
             }
         }
     }
-    if (stage4a >= 255) {
+    if (stage4a >= 155) {
         fill(ellcolor);
         ellipse(650, 470, 80 + buttonChangeW, 50 + buttonChangeH);
         fill(220);
