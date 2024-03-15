@@ -458,6 +458,6 @@ function stage5() {
     stroke(0);
     fill(240);
     textSize(28);
-    text("I cannot see You now.", -140, 230);
+    text("I cannot see You now.", -160, 530);
     pop();
 }
