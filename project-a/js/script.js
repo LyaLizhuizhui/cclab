@@ -444,6 +444,6 @@ function s5() {
     //the circle
     fill(0, 50);
     noStroke();
-    ellipse(0, height / 2, s5frameCount, s5frameCount);
+    ellipse(0, height / 2, s5frameCount * 2, s5frameCount * 2);
     pop();
 }
