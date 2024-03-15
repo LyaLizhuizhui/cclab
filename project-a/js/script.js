@@ -30,8 +30,8 @@ function setup() {
     stage4a = 0;
     stage4c = 0;
     stage4ha = 255;
-    s5frameCount = 0;
-    s5X = 0;
+    stage5frameCount = 0;
+    stage5X = 0;
     buttonChangeW = 0;
     buttonChangeH = 0;
     ellcolor = 50;
@@ -53,8 +53,8 @@ function draw() {
         stage4();
         stage4frameCount += 1;
     } else {
-        s5();
-        s5frameCount += 1;
+        stage5();
+        stage5frameCount += 1;
     }
 }
 
@@ -415,7 +415,7 @@ function stage4() {
     }
 }
 
-function s5() {
+function stage5() {
     a = random(0.75, 1);
     Y = height / 3;
     dia = 30;
@@ -429,11 +429,11 @@ function s5() {
     translate(width / 2, 0);
     stage4c = 300;
     // cocoon
-    s5a = 255;
-    s5c = 255;
+    stage5a = 255;
+    stage5c = 255;
     for (i = 1; i <= 100; i += 3) {
         for (j = 1; j <= 51; j += 10) {
-            stroke(stage4c + random(-50, 50), s5a);
+            stroke(stage4c + random(-50, 50), stage5a);
             rY1 = random(30, height - 30);
             rX1 = j * sin((rY1 - 30) / 140);
             rY2 = random(30, height - 30);
@@ -452,6 +452,11 @@ function s5() {
     //the circle
     fill(0, 50);
     noStroke();
-    ellipse(0, height / 2, s5frameCount * 2, s5frameCount * 2);
+    ellipse(0, height / 2, stage5frameCount * 2, stage5frameCount * 2);
     pop();
+    if (stage5frameCount >= 200) {
+        fill(240);
+        textSize(28);
+        text("I cannot see You now.", -140, 230);
+    }
 }
