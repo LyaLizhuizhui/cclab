@@ -441,6 +441,14 @@ function s5() {
             line(rX1, rY1, rX2, rY2);
         }
     }
+    if (frameCount % 40 == 0) {
+        for (i = 0; i <= 3; i++) {
+            textSize(28);
+            fill(80, 0, 0);
+            stroke(0);
+            text("SAVE ME", random(width), random(height));
+        }
+    }
     //the circle
     fill(0, 50);
     noStroke();
