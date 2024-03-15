@@ -1,37 +1,37 @@
 function setup() {
     let cnv = createCanvas(800, 500);
     cnv.parent("p5-canvas-container")
-    xDraggedInRange = false;
-    yDraggedInRange = false;
-    s1times = 0;
-    s1w = 28;
-    s1h = 121;
-    s1amp = 7;
-    s1freq = 41;
-    circlex = random(width);
-    circley = random(height);
-    s2y = 0;
-    s2ey = 0;
-    s2ew = 25;
-    s2eamp = 70;
-    s2dgr = 0;
-    s2dgr2 = 0;
-    s2fc = 0;
-    s2scs = 10;
-    s2x = 0;
-    s3x = 0;
-    s3fc = 0;
-    s3scs = 10;
-    s4x = 0;
-    s4fc = 0;
-    s4scs = 15;
-    s4freq = 5;
-    s4background = 1;
-    s4a = 0;
-    s4c = 0;
-    s4ha = 255;
+    XDraggedInRange = false;
+    YDraggedInRange = false;
+    stage1times = 0;
+    stage1w = 28;
+    stage1h = 121;
+    stage1amp = 7;
+    stage1freq = 41;
+    circleX = random(width);
+    circleY = random(height);
+    stage2Y = 0;
+    stage2eY = 0;
+    stage2ew = 25;
+    stage2eamp = 70;
+    stage2dgr = 0;
+    stage2dgr2 = 0;
+    stage2frameCount = 0;
+    stage2seconds = 10;
+    stage2X = 0;
+    stage3X = 0;
+    stage3frameCount = 0;
+    stage3seconds = 10;
+    stage4X = 0;
+    stage4frameCount = 0;
+    stage4seconds = 15;
+    stage4freq = 5;
+    stage4background = 1;
+    stage4a = 0;
+    stage4c = 0;
+    stage4ha = 255;
     s5frameCount = 0;
-    s5x = 0;
+    s5X = 0;
     buttonChangeW = 0;
     buttonChangeH = 0;
     ellcolor = 50;
@@ -40,25 +40,25 @@ function setup() {
 
 function draw() {
     textFont("Courier New");
-    if (s1times < 7) {
-        s1();
-    } else if (s2fc <= s2scs * 60 + 700) {
-        s2();
-        s2fc += 1;
-    } else if (s3fc <= (s3scs + 5) * 60) {
-        s3();
-        s3fc += 1;
-    } else if (s4c <= 255) {
+    if (stage1times < 7) {
+        stage1();
+    } else if (stage2frameCount <= stage2seconds * 60 + 700) {
+        stage2();
+        stage2frameCount += 1;
+    } else if (stage3frameCount <= (stage3seconds + 5) * 60) {
+        stage3();
+        stage3frameCount += 1;
+    } else if (stage4c <= 255) {
         stage = 4;
-        s4();
-        s4fc += 1;
+        stage4();
+        stage4frameCount += 1;
     } else {
         s5();
         s5frameCount += 1;
     }
 }
 
-function s1() {
+function stage1() {
     background(240, 1);
     let randomVal;
     push();
@@ -75,13 +75,13 @@ function s1() {
     pop();
     push();
     translate(width / 2, height / 2);
-    sinValue = s1amp * sin(frameCount / s1freq);
-    cosValue = (s1amp / 10) * cos((frameCount / s1freq) * 2);
+    sinValue = stage1amp * sin(frameCount / stage1freq);
+    cosValue = (stage1amp / 10) * cos((frameCount / stage1freq) * 2);
     fill(50);
-    if (s1times >= 2) {
-        ellipse(0, -sinValue, s1w + cosValue, s1h);
+    if (stage1times >= 2) {
+        ellipse(0, -sinValue, stage1w + cosValue, stage1h);
     }
-    ellipse(0, sinValue, s1w + cosValue, s1h);
+    ellipse(0, sinValue, stage1w + cosValue, stage1h);
     pop();
     if (frameCount % 60 == 0) {
         for (i = 0; i <= 3; i++) {
@@ -91,30 +91,30 @@ function s1() {
         }
     }
     fill(80, 0, 0);
-    if (mouseIsPressed == false && s1times <= 6) {
-        ellipse(circlex, circley, 40, 20);
+    if (mouseIsPressed == false && stage1times <= 6) {
+        ellipse(circleX, circleY, 40, 20);
     }
 }
 
 function mousePressed() {
-    xStartLocation = mouseX;
-    yStartLocation = mouseY;
+    XStartLocation = mouseX;
+    YStartLocation = mouseY;
     if (stage == 4) {
         ellcolor = 20;
-        s4c -= 4;
+        stage4c -= 4;
         buttonChangeW = -10;
         buttonChangeH = -10;
     }
 }
 
 function mouseDragged() {
-    if (xStartLocation >= circlex - 15 && xStartLocation <= circlex + 15) {
-        xDraggedInRange = true;
+    if (XStartLocation >= circleX - 15 && XStartLocation <= circleX + 15) {
+        XDraggedInRange = true;
     }
-    if (yStartLocation >= circley - 70 && yStartLocation <= circley + 70) {
-        yDraggedInRange = true;
+    if (YStartLocation >= circleY - 70 && YStartLocation <= circleY + 70) {
+        YDraggedInRange = true;
     }
-    if (s1times < 7 && xDraggedInRange == true && yDraggedInRange == true) {
+    if (stage1times < 7 && XDraggedInRange == true && YDraggedInRange == true) {
         ellipse(mouseX, mouseY, 40, 20);
     }
 }
@@ -123,31 +123,31 @@ function mouseReleased() {
     ellcolor = 50;
     buttonChangeW = 0;
     buttonChangeH = 0;
-    xReleasedInRange = false;
-    yReleasedInRange = false;
+    XReleasedInRange = false;
+    YReleasedInRange = false;
     if (mouseX >= width / 2 - 15 && mouseX <= width / 2 + 15) {
-        xReleasedInRange = true;
+        XReleasedInRange = true;
     }
     if (mouseY >= height / 2 - 70 && mouseY <= height / 2 + 70) {
-        yReleasedInRange = true;
+        YReleasedInRange = true;
     }
-    if (s1times < 7 && xReleasedInRange == true && yReleasedInRange == true) {
-        s1amp += 9;
-        s1freq -= 3;
-        s1times += 1;
-        s1w += 2;
-        s1h += 2;
-        circlex = random(width);
-        circley = random(height);
-        ellipse(circlex, circley, 40, 20);
+    if (stage1times < 7 && XReleasedInRange == true && YReleasedInRange == true) {
+        stage1amp += 9;
+        stage1freq -= 3;
+        stage1times += 1;
+        stage1w += 2;
+        stage1h += 2;
+        circleX = random(width);
+        circleY = random(height);
+        ellipse(circleX, circleY, 40, 20);
     }
 }
 
-function s2() {
+function stage2() {
     w = 35;
     h = 140;
-    ySpd = 0.075;
-    eySpd = (130 / 45) * ySpd;
+    YSpd = 0.075;
+    eYSpd = (130 / 45) * YSpd;
     amp = 70;
     freq = 20;
     dia = 30;
@@ -175,58 +175,58 @@ function s2() {
     push();
     translate(width / 2, height / 2);
     sinValue = amp * sin(frameCount / freq);
-    cosValue = s2eamp * cos(frameCount / freq);
+    cosValue = stage2eamp * cos(frameCount / freq);
     wcos = (amp / 10) * cos((frameCount / freq) * 2);
-    if (s2y <= 45) {
-        s2ew += 23 / (s2scs * 60 + 675);
-        if (s2fc >= s2scs * 60) {
-            s2y += ySpd;
-            s2ey -= eySpd;
-            s2eamp -= (70 / 45) * ySpd;
-            s2dgr += (PI / 45) * ySpd;
-            s2dgr2 += (PI / 2 / 45) * ySpd;
+    if (stage2Y <= 45) {
+        stage2ew += 23 / (stage2seconds * 60 + 675);
+        if (stage2frameCount >= stage2seconds * 60) {
+            stage2Y += YSpd;
+            stage2eY -= eYSpd;
+            stage2eamp -= (70 / 45) * YSpd;
+            stage2dgr += (PI / 45) * YSpd;
+            stage2dgr2 += (PI / 2 / 45) * YSpd;
         }
     }
     fill(50);
-    ellipse(0, s2y - sinValue, w + wcos, h);
+    ellipse(0, stage2Y - sinValue, w + wcos, h);
     push();
-    translate(0, s2ey + cosValue);
-    rotate(s2dgr2);
+    translate(0, stage2eY + cosValue);
+    rotate(stage2dgr2);
     for (ed = 2; ed >= -2; ed -= 1) {
         if (ed % 2 == 0) {
             fill(0);
         } else {
             fill(225);
         }
-        rotate(s2dgr);
-        ellipse(0, 0, s2ew + ed * 4, h + ed * 4);
+        rotate(stage2dgr);
+        ellipse(0, 0, stage2ew + ed * 4, h + ed * 4);
     }
     fill(225);
-    circle(0, 0, s2ew - 12);
+    circle(0, 0, stage2ew - 12);
     fill(0);
     circle(0, 0, 10);
     pop();
 
-    ellipse(0, s2y + sinValue, w + wcos, h);
-    if (s2y > 37 && s2y < 44) {
+    ellipse(0, stage2Y + sinValue, w + wcos, h);
+    if (stage2Y > 37 && stage2Y < 44) {
         fill(10);
         textSize(28);
-        text("I can see you now.", -140, 230);
+        text("I can see You now.", -140, 230);
     }
     pop();
 }
 
-function s3() {
+function stage3() {
     background(240, 1);
     a = random(0.75, 1);
-    y = height / 3;
+    Y = height / 3;
     dia = 30;
     level = 500;
     sca = 0.02;
     amp = 55;
     freq = 5;
     h = 150;
-    ey = 295;
+    eY = 295;
     ew = 50;
     eh = 140;
     eamp = 70;
@@ -238,32 +238,32 @@ function s3() {
     translate(width / 2, 0);
     cosValue = amp * cos(frameCount / freq);
     sinValue = amp * sin(frameCount / freq);
-    y = level * noise(frameCount * sca);
-    cx = s3x + cosValue;
-    cy = y + sinValue;
-    if (cx <= -a * (width / 2)) {
-        s3x = 0;
+    Y = level * noise(frameCount * sca);
+    cX = stage3X + cosValue;
+    cY = Y + sinValue;
+    if (cX <= -a * (width / 2)) {
+        stage3X = 0;
     } else {
-        s3x -= 5;
+        stage3X -= 5;
     }
-    if (s3fc <= s3scs * 60) {
-        fill(20, ((225 / s3scs) * s3fc) / 60);
-        stroke(50, ((225 / s3scs) * s3fc) / 60);
+    if (stage3frameCount <= stage3seconds * 60) {
+        fill(20, ((225 / stage3seconds) * stage3frameCount) / 60);
+        stroke(50, ((225 / stage3seconds) * stage3frameCount) / 60);
     } else {
         fill(20, 225);
         stroke(50, 225);
     }
-    circle(cx, cy, dia);
-    circle(-cx, cy, dia);
-    circle(cx, cy + d, dia);
-    circle(-cx, cy + d, dia);
-    //body
+    circle(cX, cY, dia);
+    circle(-cX, cY, dia);
+    circle(cX, cY + d, dia);
+    circle(-cX, cY + d, dia);
+    //bodY
     stroke(0);
     fill(50);
     ecos = (eamp / 10) * cos((frameCount / efreq) * 2);
     esin = eamp * sin(frameCount / efreq);
-    ellipse(0, ey + esin, ew - 15 + ecos, eh);
-    ellipse(0, ey - esin, ew - 15 + ecos, eh);
+    ellipse(0, eY + esin, ew - 15 + ecos, eh);
+    ellipse(0, eY - esin, ew - 15 + ecos, eh);
     for (ed = 8; ed >= -8; ed -= 4) {
         if (ed % 8 == 0) {
             fill(0);
@@ -274,128 +274,128 @@ function s3() {
     }
     translate(0, 120);
     fill(225);
-    cx1 = 4 * map(mouseX, 0, width, -1, 1);
-    cy1 = 4 * map(mouseY, 0, height, -1, 1);
-    circle(cx1, cy1, ew - 12);
+    cX1 = 4 * map(mouseX, 0, width, -1, 1);
+    cY1 = 4 * map(mouseY, 0, height, -1, 1);
+    circle(cX1, cY1, ew - 12);
     fill(0);
-    cx2 = 8 * map(mouseX, 0, width, -1, 1);
-    cy2 = 8 * map(mouseY, 0, height, -1, 1);
-    circle(cx2, cy2, ew - 40);
+    cX2 = 8 * map(mouseX, 0, width, -1, 1);
+    cY2 = 8 * map(mouseY, 0, height, -1, 1);
+    circle(cX2, cY2, ew - 40);
     fill(10);
     textSize(28);
-    if (s3fc <= 150) {
+    if (stage3frameCount <= 150) {
         text("But I also want to see more...", -240, 360);
-    } else if (s3fc > 250 && s3fc <= 400) {
-        text("So I will let you lead me", -220, 360);
-    } else if (s3fc > 500 && s3fc <= 650) {
+    } else if (stage3frameCount > 250 && stage3frameCount <= 400) {
+        text("So I will let You lead me", -220, 360);
+    } else if (stage3frameCount > 500 && stage3frameCount <= 650) {
         text("and I will grow stronger", -220, 360);
     }
     pop();
 }
 
-function s4() {
+function stage4() {
     a = random(0.75, 1);
-    y = height / 3;
+    Y = height / 3;
     dia = 30;
     level = 500;
     sca = 0.02;
     amp = 55;
     h = 150;
-    ey = 295;
+    eY = 295;
     ew = 50;
     eh = 140;
     eamp = 70;
     efreq = 20;
     d = 60;
 
-    s4background -= 0.0003;
-    background(240, s4background);
+    stage4background -= 0.0003;
+    background(240, stage4background);
     push();
     translate(width / 2, 0);
-    // body
+    // bodY
     stroke(0);
     fill(50);
     ecos = (eamp / 10) * cos((frameCount / efreq) * 2);
     esin = eamp * sin(frameCount / efreq);
-    ellipse(0, ey + esin, ew - 15 + ecos, eh);
-    ellipse(0, ey - esin, ew - 15 + ecos, eh);
+    ellipse(0, eY + esin, ew - 15 + ecos, eh);
+    ellipse(0, eY - esin, ew - 15 + ecos, eh);
     // wings
-    s4freq -= 0.001;
-    cosValue = amp * cos(frameCount / s4freq);
-    sinValue = amp * sin(frameCount / s4freq);
-    y = level * noise(frameCount * sca);
-    cx = s4x + cosValue;
-    cy = y + sinValue;
-    if (cx <= -a * (width / 2)) {
-        s4x = 0;
+    stage4freq -= 0.001;
+    cosValue = amp * cos(frameCount / stage4freq);
+    sinValue = amp * sin(frameCount / stage4freq);
+    Y = level * noise(frameCount * sca);
+    cX = stage4X + cosValue;
+    cY = Y + sinValue;
+    if (cX <= -a * (width / 2)) {
+        stage4X = 0;
     } else {
-        s4x -= 5;
+        stage4X -= 5;
     }
     fill(20, 225);
     stroke(50, 225);
-    circle(cx, cy, dia);
-    circle(-cx, cy, dia);
-    circle(cx, cy + d, dia);
-    circle(-cx, cy + d, dia);
+    circle(cX, cY, dia);
+    circle(-cX, cY, dia);
+    circle(cX, cY + d, dia);
+    circle(-cX, cY + d, dia);
     // head
-    s4ha -= 0.2;
+    stage4ha -= 0.2;
     for (ed = 8; ed >= -8; ed -= 4) {
         if (ed % 8 == 0) {
-            fill(0, s4ha);
+            fill(0, stage4ha);
         } else {
-            fill(225, s4ha);
+            fill(225, stage4ha);
         }
-        stroke(0, s4ha);
+        stroke(0, stage4ha);
         ellipse(0, 120, eh + ed, ew + ed);
     }
-    // eye
+    // eYe
     push();
     translate(0, 120);
-    if (s4a <= 15) {
-        cx1 = 4 * map(mouseX, 0, width, -1, 1);
-        cy1 = 4 * map(mouseY, 0, height, -1, 1);
-        cx2 = 8 * map(mouseX, 0, width, -1, 1);
-        cy2 = 8 * map(mouseY, 0, height, -1, 1);
+    if (stage4a <= 15) {
+        cX1 = 4 * map(mouseX, 0, width, -1, 1);
+        cY1 = 4 * map(mouseY, 0, height, -1, 1);
+        cX2 = 8 * map(mouseX, 0, width, -1, 1);
+        cY2 = 8 * map(mouseY, 0, height, -1, 1);
     } else {
-        cx1 = 2 - random(4);
-        cy1 = 2 - random(4);
-        cx2 = 2 - random(4);
-        cy2 = 2 - random(4);
+        cX1 = 2 - random(4);
+        cY1 = 2 - random(4);
+        cX2 = 2 - random(4);
+        cY2 = 2 - random(4);
     }
-    stroke(0, s4ha);
-    fill(225, s4ha);
-    circle(cx1, cy1, ew - 12);
-    fill(0, s4ha);
-    circle(cx2, cy2, ew - 40);
+    stroke(0, stage4ha);
+    fill(225, stage4ha);
+    circle(cX1, cY1, ew - 12);
+    fill(0, stage4ha);
+    circle(cX2, cY2, ew - 40);
     pop();
     // cocoon
-    if (s4a <= 50) {
-        s4a += 0.05;
-    } else if (s4a <= 255) {
-        s4a += 2;
-    } else if (s4c <= 200) {
-        s4c += 0.5;
+    if (stage4a <= 50) {
+        stage4a += 0.05;
+    } else if (stage4a <= 255) {
+        stage4a += 2;
+    } else if (stage4c <= 200) {
+        stage4c += 0.5;
     } else {
-        s4c += 0.2;
+        stage4c += 0.2;
     }
     for (i = 1; i <= 100; i += 3) {
         for (j = 1; j <= 51; j += 10) {
-            stroke(s4c + random(-50, 50), s4a);
-            ry1 = random(30, height - 30);
-            rx1 = j * sin((ry1 - 30) / 140);
-            ry2 = random(30, height - 30);
-            rx2 = -j * sin((ry2 - 30) / 140);
-            line(rx1, ry1, rx2, ry2);
+            stroke(stage4c + random(-50, 50), stage4a);
+            rY1 = random(30, height - 30);
+            rX1 = j * sin((rY1 - 30) / 140);
+            rY2 = random(30, height - 30);
+            rX2 = -j * sin((rY2 - 30) / 140);
+            line(rX1, rY1, rX2, rY2);
         }
     }
     pop();
     //text
-    if (s4a <= 15) {
+    if (stage4a <= 15) {
         fill(10);
         textSize(28);
         fill(140, 0, 0);
         r = random(-2, 2);
-        text("Why can't I control this?", 200, 470);
+        text("WhY can't I control this?", 200, 470);
     } else {
         if (frameCount % 40 == 0) {
             for (i = 0; i <= 3; i++) {
@@ -406,7 +406,7 @@ function s4() {
             }
         }
     }
-    if (s4a >= 255) {
+    if (stage4a >= 255) {
         fill(ellcolor);
         ellipse(650, 470, 80 + buttonChangeW, 50 + buttonChangeH);
         fill(220);
@@ -417,7 +417,7 @@ function s4() {
 
 function s5() {
     a = random(0.75, 1);
-    y = height / 3;
+    Y = height / 3;
     dia = 30;
     level = 500;
     sca = 0.02;
@@ -427,18 +427,18 @@ function s5() {
     // background(240, 1)
     push();
     translate(width / 2, 0);
-    s4c = 300;
+    stage4c = 300;
     // cocoon
     s5a = 255;
     s5c = 255;
     for (i = 1; i <= 100; i += 3) {
         for (j = 1; j <= 51; j += 10) {
-            stroke(s4c + random(-50, 50), s5a);
-            ry1 = random(30, height - 30);
-            rx1 = j * sin((ry1 - 30) / 140);
-            ry2 = random(30, height - 30);
-            rx2 = -j * sin((ry2 - 30) / 140);
-            line(rx1, ry1, rx2, ry2);
+            stroke(stage4c + random(-50, 50), s5a);
+            rY1 = random(30, height - 30);
+            rX1 = j * sin((rY1 - 30) / 140);
+            rY2 = random(30, height - 30);
+            rX2 = -j * sin((rY2 - 30) / 140);
+            line(rX1, rY1, rX2, rY2);
         }
     }
     //the circle
