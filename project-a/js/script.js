@@ -211,7 +211,7 @@ function stage2() {
     if (stage2Y > 37 && stage2Y < 44) {
         fill(10);
         textSize(28);
-        text("I can see You now.", -140, 230);
+        text("I can see you now.", -140, 230);
     }
     pop();
 }
@@ -286,7 +286,7 @@ function stage3() {
     if (stage3frameCount <= 150) {
         text("But I also want to see more...", -240, 360);
     } else if (stage3frameCount > 250 && stage3frameCount <= 400) {
-        text("So I will let You lead me", -220, 360);
+        text("So I will let you lead me", -220, 360);
     } else if (stage3frameCount > 500 && stage3frameCount <= 650) {
         text("and I will grow stronger", -220, 360);
     }
@@ -395,7 +395,7 @@ function stage4() {
         textSize(28);
         fill(140, 0, 0);
         r = random(-2, 2);
-        text("WhY can't I control this?", 200, 470);
+        text("Why can't I control this?", 200, 470);
     } else {
         if (frameCount % 40 == 0) {
             for (i = 0; i <= 3; i++) {
@@ -447,7 +447,7 @@ function stage5() {
             textSize(28);
             fill(80, 0, 0);
             stroke(0);
-            text("SAVE ME", random(width), random(height));
+            text("SAVE ME", random(-width / 2, width / 2), random(height));
         }
     }
     //the circle
@@ -455,10 +455,8 @@ function stage5() {
     noStroke();
     ellipse(0, height / 2, stage5frameCount * 2, stage5frameCount * 2);
     // text2
-    if (stage5frameCount >= 200) {
-        fill(240);
-        textSize(28);
-        text("I cannot see You now.", -140, 230);
-    }
+    fill(240);
+    textSize(28);
+    text("I cannot see You now.", -140, 230);
     pop();
 }
