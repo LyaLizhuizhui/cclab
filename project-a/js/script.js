@@ -455,6 +455,7 @@ function stage5() {
     noStroke();
     ellipse(0, height / 2, stage5frameCount * 2, stage5frameCount * 2);
     // text2
+    stroke(0);
     fill(240);
     textSize(28);
     text("I cannot see You now.", -140, 230);
